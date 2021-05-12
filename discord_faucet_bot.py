@@ -32,7 +32,7 @@ FAUCET_SEED        = str(c["FAUCET"]["seed"])
 FAUCET_PRIVKEY     = str(c["FAUCET"]["private_key"])
 if FAUCET_PRIVKEY == "":
     FAUCET_PRIVKEY = str(seed_to_privkey(FAUCET_SEED).hex())
-FAUCET_ADDRESS     = str(privkey_to_address(bytes.fromhex(FAUCET_PRIVKEY), hrp=BECH32_HRP))
+FAUCET_ADDRESS     = str(c["FAUCET"]["faucet_address"])
 EXPLORER_URL       = str(c["OPTIONAL"]["explorer_url"])
 if EXPLORER_URL != "":
     EXPLORER_URL = f'{EXPLORER_URL}/transactions/'
@@ -142,10 +142,11 @@ async def on_message(message):
     if message.content.startswith('$request') and message.channel.name in LISTENING_CHANNELS:
         channel = message.channel
         requester_address = str(message.content).replace("$request", "").replace(" ", "").lower()
+        faucet_address_length = len(FAUCET_ADDRESS)
 
-        if len(requester_address) != 44 or requester_address[:len(BECH32_HRP)] != BECH32_HRP:
+        if len(requester_address) != faucet_address_length or requester_address[:len(BECH32_HRP)] != BECH32_HRP:
             await channel.send(f'{requester.mention}, Invalid address format `{requester_address}`\n'
-                               f'Address length must be equal {len(FAUCET_ADDRESS)} and the suffix must be `{BECH32_HRP}`')
+                               f'Address length must be equal {faucet_address_length} and the suffix must be `{BECH32_HRP}`')
             return
 
         if requester.id in ACTIVE_REQUESTS:

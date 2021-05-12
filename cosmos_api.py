@@ -20,7 +20,7 @@ FAUCET_SEED           = str(c["FAUCET"]["seed"])
 if FAUCET_PRIVKEY == "":
     FAUCET_PRIVKEY = str(seed_to_privkey(FAUCET_SEED).hex())
 
-FAUCET_ADDRESS    = str(privkey_to_address(bytes.fromhex(FAUCET_PRIVKEY), hrp=BECH32_HRP))
+FAUCET_ADDRESS    = str(c["FAUCET"]["faucet_address"])
 EXPLORER_URL      = str(c["OPTIONAL"]["explorer_url"])
 
 
