@@ -53,12 +53,14 @@ tmux new -s sifchain_rest -d sifnodecli rest-server --laddr tcp://localhost:1317
 
 Bear in mind you'll also need to have the right ports open for the bot to communicate with the Discord client/SDK.
 
+You'll have to make sure that the node's REST server is running on `localhost:1317`. Do this in `.juno/config/app.toml` or wherever your `--home` is.
+
 ## How to run
 
 Start faucet bot  
 ```
 tmux new -s discord_faucet_bot -d cd ~/cosmos-discord-faucet && source venv/bin/activate && python3 discord_faucet_bot.py
-```  
+```
   
 ### Alternatively, the bot can be run through systemd (preferred):
 
@@ -66,10 +68,10 @@ tmux new -s discord_faucet_bot -d cd ~/cosmos-discord-faucet && source venv/bin/
 
 - Start the service  
 ```
-ln -s $HOME/cosmos-discord-faucet/discord-faucet-bot.service /etc/systemd/system/ \
-  && systemctl daemon-reload \
-  && systemctl enable discord-faucet-bot.service \
-  && systemctl start discord-faucet-bot.service \
-  && systemctl status discord-faucet-bot.service
+sudo ln -s $HOME/cosmos-discord-faucet/discord-faucet-bot.service /etc/systemd/system/ \
+  && sudo systemctl daemon-reload \
+  && sudo systemctl enable discord-faucet-bot.service \
+  && sudo systemctl start discord-faucet-bot.service \
+  && sudo systemctl status discord-faucet-bot.service
 ```  
 
