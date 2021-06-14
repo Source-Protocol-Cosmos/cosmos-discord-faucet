@@ -146,7 +146,7 @@ async def on_message(message):
 
         if len(requester_address) != faucet_address_length or requester_address[:len(BECH32_HRP)] != BECH32_HRP:
             await channel.send(f'{requester.mention}, Invalid address format `{requester_address}`\n'
-                               f'Address length must be equal {faucet_address_length} and the suffix must be `{BECH32_HRP}`')
+                               f'Address length must be equal {faucet_address_length} and the prefix must be `{BECH32_HRP}`')
             return
 
         if requester.id in ACTIVE_REQUESTS:
@@ -180,7 +180,7 @@ async def on_message(message):
                 await channel.send(f'{requester.mention}, `$tx_info` {EXPLORER_URL}{transaction["txhash"]}\n')
 
             else:
-                await channel.send(f'{requester.mention}, Can\'t send transaction. Try making another one request'
+                await channel.send(f'{requester.mention}, Can\'t send transaction. Try making another request'
                                    f'\n{transaction}')
                 del ACTIVE_REQUESTS[requester.id]
 
