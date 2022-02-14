@@ -4,7 +4,7 @@ async-timeout==3.0.1
 attrs==20.2.0
 bech32==1.2.0
 chardet==3.0.4
-cosmospy==5.1.1
+git+https://github.com/envoylabs/cosmospy.git
 discord==1.0.1
 discord.py==1.5.1
 ecdsa==0.16.0
