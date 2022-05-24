@@ -6,7 +6,7 @@ Discord faucet bot for any blockchain based on Cosmos
   <summary>List of available commands:</summary>
 
 1. Request coins through the faucet  
-`$request juno1lj3rsayj4xtrhp2e3elv4nf7lazxty272zqegr`
+`$request source1lj3rsayj4xtrhp2e3elv4nf7lazxty272zqegr`
 
 Transaction status explanation:  
 ✅ - means the bot sent a transaction to your address
@@ -21,7 +21,7 @@ Transaction status explanation:
 `$tx_info 009CEA347EAFD795E8B10088D18156BC15F24362416BEEF1073BFDFD936E19B0`
 
 5. Show address balance  
-`$balance juno1lj3rsayj4xtrhp2e3elv4nf7lazxty272zqegr`  
+`$balance source1lj3rsayj4xtrhp2e3elv4nf7lazxty272zqegr`  
 
 </details>  
 
@@ -53,7 +53,7 @@ tmux new -s sifchain_rest -d sifnodecli rest-server --laddr tcp://localhost:1317
 
 Bear in mind you'll also need to have the right ports open for the bot to communicate with the Discord client/SDK.
 
-You'll have to make sure that the node's REST server is running on `localhost:1317`. Do this in `.juno/config/app.toml` or wherever your `--home` is.
+You'll have to make sure that the node's REST server is running on `localhost:1317`. Do this in `.source/config/app.toml` or wherever your `--home` is.
 
 ## How to run
 
