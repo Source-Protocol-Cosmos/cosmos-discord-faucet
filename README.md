@@ -36,7 +36,7 @@ Transaction status explanation:
 ```bash
 sudo apt update \
   && sudo apt install -yqq python3-pip python3-venv git tmux \
-  && git clone https://github.com/c29r3/cosmos-discord-faucet.git \
+  && git clone https://github.com/Source-Protocol-Cosmos/cosmos-discord-faucet.git \
   && cd cosmos-discord-faucet \
   && python3 -m venv venv \
   && source venv/bin/activate \
