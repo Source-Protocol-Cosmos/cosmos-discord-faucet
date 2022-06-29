@@ -37,7 +37,6 @@ def coins_dict_to_string(coins: dict, table_fmt_: str = "", headers="") -> str:
     for i in range(len(coins)):
         hm.append([list(coins.keys())[i], list(coins.values())[i], int(int(list(coins.values())[i]) / DECIMAL)])
 
-    print(coins)
     if headers == "no":
         d = tabulate(hm, tablefmt=table_fmt_)
     else:
@@ -55,7 +54,7 @@ async def async_request(session, url, data: str = ""):
             async with session.post(url=url, data=data, headers=headers) as resp:
                 data = await resp.text()
 
-        if type(data) is None or "error" or 'text/plain' in data:
+        if type(data) is None or "error" in data  or 'text/plain' in data:
             return await resp.text()
         else:
             return await resp.json()
@@ -74,9 +73,9 @@ async def get_addr_balance(session, addr: str):
                 coins[i["denom"]] = i["amount"]
             return coins
         else:
-            return 0
+            return []
     except Exception as addr_balancer_err:
-        print("get_addr_balance", d, addr_balancer_err)
+        print("ERROR at get_addr_balance response:", d, "ERROR MESSAGE", addr_balancer_err)
 
 
 async def get_address_info(session, addr: str):
