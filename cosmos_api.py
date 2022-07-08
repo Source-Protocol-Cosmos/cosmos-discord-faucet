@@ -146,10 +146,10 @@ async def gen_transaction(recipient_: str, sequence: int, denom: list, account_n
     )
     if type(denom) is list:
         for i, den in enumerate(denom):
-            tx.add_transfer(recipient=recipient_, amount=amount_[i], denom=den)
+            tx.add_transfer(recipient=recipient_, amount=amount_[i], denom=den, hrp=BECH32_HRP)
 
     else:
-        tx.add_transfer(recipient=recipient_, amount=amount_[0], denom=denom[0])
+        tx.add_transfer(recipient=recipient_, amount=amount_[0], denom=denom[0], hrp=BECH32_HRP)
     print(tx)
     return tx
 
